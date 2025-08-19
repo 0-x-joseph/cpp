@@ -3,10 +3,10 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 LDFLAGS = 
 RM = rm -rf
 
-SRCS = megaphone.cpp
+SRCS = main.cpp phoneBook.cpp Contact.cpp
 OBJS = $(SRCS:.c=.o)
 
-NAME = megaphone
+NAME = bin
 
 all: $(NAME)
 
