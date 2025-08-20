@@ -1,36 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybouryal <ybouryal@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/20 09:56:17 by ybouryal          #+#    #+#             */
+/*   Updated: 2025/08/20 10:19:55 by ybouryal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include <iomanip>
+#include <iostream>
 
-/*
-class PhoneBook {
-
-public:
-
-	PhoneBook(void);
-
-	void	add(Contact contact);
-
-	void	search(Contact contact);
-
-	void	display(void);
-
-private:
-	Contact	contacts[9];
-};
-*/
-
-std::string only_ten(std::string& str, int col_width)
-{
-	int			len;
-	std::string	ws_str;
-
-	len = str.length();
-	if (len >= col_width)
-		return (str.substr(0, 9) + '.');
-	for (int i = len - 1; i < col_width; i++)
-		ws_str.append(" ");
-	return (str + ws_str);
-}
 
 PhoneBook::PhoneBook(void) {
 	this->top = -1;
@@ -49,19 +33,54 @@ void	PhoneBook::add(Contact contact) {
 }
 
 void	PhoneBook::display(void) {
-	std::cout << TABLE_HEADER << std::endl;
+	this->display_table_header();
 
-	for (int i = 0; i < this->top; i++) {
-		std::cout << " " << i << "         " << " " << "|";
-		std::cout << " " << only_ten(this->contacts[i].first_name, this->column_width) << " " << "|";
-		std::cout << " " << only_ten(this->contacts[i].last_name, this->column_width) << " " << "|";
-		std::cout << " " << only_ten(this->contacts[i].nickname, this->column_width) << std::endl;
-	}
+	for (int i = 0; i <= this->top; i++)
+		this->display_one(i);
 }
 
-
-void	PhoneBook::search(Contact contact)
+void	PhoneBook::search(int idx)
 {
-	(void)contact;
+	if (idx < 0 || idx > this->top)
+		return ;
+	this->display_table_header();
+	this->display_one(idx);
+}
+
+Contact	PhoneBook::get_contact(void)
+{
+	std::string	f, l, n, nbr, s;
+
+	std::cout << "FirstName: ";
+	std::cin >> f;
+	std::cout << "LastName: ";
+	std::cin >> l;
+	std::cout << "NickName: ";
+	std::cin >> n;
+	std::cout << "Phone Number: ";
+	std::cin >> nbr;
+	std::cout << "Secret: ";
+	std::cin >> s;
+
+	return (Contact(f, l, n, nbr, s));
+}
+
+void	PhoneBook::display_one(int idx)
+{
+	int	left;
+
+	std::cout << idx << std::setw(3 + 9) << " | "
+		<< Contact::truncate(this->contacts[idx].first_name, this->column_width, left) << std::setw(3 + left) << " | "
+		<< Contact::truncate(this->contacts[idx].last_name, this->column_width, left) << std::setw(3 + left) << " | "
+		<< Contact::truncate(this->contacts[idx].nickname, this->column_width, left) << std::endl;
 	return ;
+}
+
+void	PhoneBook::display_table_header()
+{
+	std::cout << "Index" << std::setw(3 + 5) << " | "
+		<< "FirstName" << std::setw(3 + 1) << " | "
+		<< "LastName" << std::setw(3 + 2) << " | "
+		<< "NickName" << std::endl;
+	std::cout << "-----------------------------------------------" << std::endl;
 }

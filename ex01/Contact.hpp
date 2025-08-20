@@ -6,15 +6,14 @@
 /*   By: ybouryal <ybouryal@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:42:42 by ybouryal          #+#    #+#             */
-/*   Updated: 2025/08/19 11:44:28 by ybouryal         ###   ########.fr       */
+/*   Updated: 2025/08/19 22:24:13 by ybouryal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <string.h>
-#include <iostream>
+#include <string>
 
 class Contact {
 
@@ -26,7 +25,12 @@ public:
 	std::string	secret;
 
 	Contact(void);
-	Contact(std::string	fname, std::string lname, std::string nickname, std::string number, std::string secret);
+
+	Contact(std::string& f, std::string& l, std::string& n, std::string& nbr, std::string& s);
+
+	static std::string	truncate(std::string& str, unsigned int width, int& left);
+
+	~Contact(void);
 };
 
 #endif

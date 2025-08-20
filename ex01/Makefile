@@ -1,19 +1,31 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ybouryal <ybouryal@student.1337.ma>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/20 10:18:13 by ybouryal          #+#    #+#              #
+#    Updated: 2025/08/20 10:18:19 by ybouryal         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 LDFLAGS = 
 RM = rm -rf
 
-SRCS = main.cpp phoneBook.cpp Contact.cpp
-OBJS = $(SRCS:.c=.o)
+SRCS = main.cpp PhoneBook.cpp Contact.cpp
+OBJS = $(SRCS:.cpp=.o)
 
-NAME = bin
+NAME = book
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) -o $(NAME)
 
-%.o:	%.c
+%.o:	%.cpp
 	$(CC) $(CFLAGS) -c $<
 
 clean:
