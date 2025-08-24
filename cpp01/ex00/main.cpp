@@ -22,6 +22,7 @@ int	main()
 	Zombie*	z;
 
 	z = newZombie("hamid");
+	z->announce();
 	delete z;
 
 	randomChump("salim");
