@@ -6,7 +6,7 @@
 /*   By: ybouryal <ybouryal@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 11:42:42 by ybouryal          #+#    #+#             */
-/*   Updated: 2025/08/19 22:24:13 by ybouryal         ###   ########.fr       */
+/*   Updated: 2025/08/22 18:42:20 by ybouryal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,18 @@ public:
 	std::string	secret;
 
 	static std::string	truncate(std::string& str, unsigned int width, int& left);
+	static bool			is_valid_phonenumber(std::string& nbr);
 
 	Contact(void);
 
 	Contact(std::string& f, std::string& l, std::string& n, std::string& nbr, std::string& s);
 
+	bool	empty(void) const;
+
 	~Contact(void);
+
+private:
+	bool	is_empty;
 };
 
 #endif

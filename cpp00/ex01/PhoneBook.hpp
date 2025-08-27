@@ -25,7 +25,7 @@ public:
 
 	Contact	get_contact(void);
 
-	void	search(int index);
+	void	search(void);
 
 	void	display(void);
 
@@ -34,8 +34,11 @@ public:
 private:
 	Contact	contacts[8];
 	int		top;
+	int		len;
 	int		max_contacts;
 	int		column_width;
+
+	static std::string	get_info(char *name);
 
 	void	display_one(int index);
 

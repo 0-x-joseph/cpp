@@ -18,7 +18,7 @@
 void	menu(void)
 {
 	std::cout << "- ADD\t\t[add a contact to your list]" << std::endl;
-	std::cout << "- SEARCH\t\t[look for a contact in your list]" << std::endl;
+	std::cout << "- SEARCH\t[look for a contact in your list]" << std::endl;
 	std::cout << "- EXIT\t\t[exit the program]" << std::endl;
 	std::cout << "> ";
 }
@@ -26,27 +26,27 @@ void	menu(void)
 int	main()
 {
 	std::string	in;
-	int			idx;
 	PhoneBook	phoneBook;
 
 	while (1) {
+		if (std::cin.eof())
+			return (0);
 		menu();
 
-		if (!std::getline(std::cin, in, '\n'))
+		if (!std::getline(std::cin, in))
 			break ;
 
 		if (in == "ADD") {
 			Contact contact = phoneBook.get_contact();
+			if (contact.empty())
+				break ;
 			phoneBook.add(contact);
 		} else if (in == "SEARCH") {
 			phoneBook.display();
-			std::cout << "index: ";
-			std::cin >> idx;
-			phoneBook.search(idx);
+			phoneBook.search();
 		} else if (in == "EXIT") {
 			break ;
 		}
-		std::cin.ignore();
 	}
 	return (0);
 }
