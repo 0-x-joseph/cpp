@@ -15,14 +15,10 @@
 
 Zombie::Zombie(void) {}
 
-Zombie::Zombie(std::string& n) {
-	this->name = n;
+Zombie::Zombie(std::string &n) { this->name = n; }
+
+void Zombie::announce(void) {
+  std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::announce(void) {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-Zombie::~Zombie(void) {
-	std::cout << this->name << ": died" << std::endl;
-}
+Zombie::~Zombie(void) { std::cout << this->name << ": died" << std::endl; }

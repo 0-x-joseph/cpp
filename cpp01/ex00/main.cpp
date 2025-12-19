@@ -10,21 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #include "Zombie.hpp"
+#include <string>
 
-Zombie*	newZombie(std::string name);
+Zombie *newZombie(std::string name);
 
-void	randomChump(std::string name);
+void randomChump(std::string name);
 
-int	main()
-{
-	Zombie*	z;
+int main() {
+  Zombie *z;
 
-	z = newZombie("hamid");
-	z->announce();
-	delete z;
+  z = newZombie("hamid");
+  z->announce();
+  delete z;
 
-	randomChump("salim");
-	return (0);
+  randomChump("salim");
+  return (0);
 }
