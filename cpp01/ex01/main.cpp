@@ -12,16 +12,17 @@
 
 #include "Zombie.hpp"
 
-Zombie* zombieHorde( int N, std::string name );
+Zombie *zombieHorde(int N, std::string name);
 
-int	main(void) {
-	Zombie*	z;
+int main(void) {
+  Zombie *z;
+  int len = 100;
 
-	z = zombieHorde(100, "zz");
+  z = zombieHorde(len, "zennnn");
 
-	for (int i = 0; i < 100 ; i++)
-		z[i].announce();
+  for (int i = 0; i < len; i++)
+    z[i].announce();
 
-	delete[] z;
-	return (0);
+  delete[] z;
+  return (0);
 }

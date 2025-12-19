@@ -11,23 +11,21 @@
 /* ************************************************************************** */
 
 #ifndef __ZOMBIE__
-# define __ZOMBIE__
+#define __ZOMBIE__
 
 #include <string>
 
 class Zombie {
 
 public:
-	Zombie(void);
+  void setName(std::string &n);
 
-	Zombie(std::string &name);
+  void announce(void);
 
-	void	announce(void);
-
-	~Zombie(void);
+  ~Zombie(void);
 
 private:
-	std::string name;
+  std::string name;
 };
 
 #endif /* __ZOMBIE__ */
