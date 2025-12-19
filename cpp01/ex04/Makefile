@@ -15,7 +15,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 LDFLAGS = 
 RM = rm -rf
 
-SRCS = main.cpp replace.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 NAME = sed_killer

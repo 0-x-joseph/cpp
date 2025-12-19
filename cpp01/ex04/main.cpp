@@ -10,40 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
 #include <fstream>
-#include "replace.hpp"
+#include <iostream>
+#include <string>
 
-int main(int ac, char **av)
-{
-    if (ac != 4) {
-        std::cout << "Usage: " << av[0] << " <filename> <string 1> <string 2>" << std::endl;
-        return 1;
-    }
+int replace(std::string &line, const std::string &s1, const std::string &s2);
 
-    std::string s1 = av[2];
-    std::string s2 = av[3];
-    std::string new_filename = std::string(av[1]) + ".replace";
+int main(int ac, char **av) {
+  if (ac != 4) {
+    std::cout << "Usage: " << av[0] << " <filename> <string 1> <string 2>"
+              << std::endl;
+    return 1;
+  }
 
-    std::ifstream infile(av[1]);
-    if (!infile) {
-        std::cerr << "Error: cannot open input file." << std::endl;
-        return 1;
-    }
+  std::string s1 = av[2];
+  std::string s2 = av[3];
+  std::string new_filename = std::string(av[1]) + ".replace";
 
-    std::ofstream outfile(new_filename.c_str());
-    if (!outfile) {
-        std::cerr << "Error: cannot create output file." << std::endl;
-        return 1;
-    }
+  std::ifstream infile(av[1]);
+  if (!infile) {
+    std::cerr << "Error: cannot open input file." << std::endl;
+    return 1;
+  }
 
-    std::string line;
-    while (std::getline(infile, line))
-    {
-        mine::replace(line, s1, s2);
-        outfile << line << '\n';
-    }
+  std::ofstream outfile(new_filename.c_str());
+  if (!outfile) {
+    std::cerr << "Error: cannot create output file." << std::endl;
+    return 1;
+  }
 
+  std::string line;
+  while (std::getline(infile, line)) {
+    replace(line, s1, s2);
+    outfile << line << '\n';
+  }
+
+  return 0;
+}
+
+int replace(std::string &line, const std::string &s1, const std::string &s2) {
+  if (s1.empty())
     return 0;
+
+  int count = 0;
+  size_t pos = 0;
+  while ((pos = line.find(s1, pos)) != std::string::npos) {
+    line.erase(pos, s1.length());
+    line.insert(pos, s2);
+    pos += s2.length();
+    ++count;
+  }
+  return count;
 }
