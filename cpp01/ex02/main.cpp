@@ -10,24 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include <ostream>
 #include <string>
-#include <iostream>
 
-int	main(void) {
-	std::string str = "HI THIS IS BRAIN";
-	std::string& str_ref = str;
-	std::string* str_ptr = &str;
+int main(void) {
+  std::string str = "HI THIS IS BRAIN";
+  std::string *stringPTR = &str;
+  std::string &stringREF = str;
 
-	std::cout << "string address    : " << &str << std::endl;
-	std::cout << "string ptr address: " << str_ptr << std::endl;
-	std::cout << "string ref address: " << &str_ref << std::endl;
+  std::cout << "string address    : " << &str << std::endl;
+  std::cout << "string ptr address: " << stringPTR << std::endl;
+  std::cout << "string ref address: " << &stringREF << std::endl;
 
-	std::cout << std::endl;
+  std::cout << std::endl;
 
-	std::cout << "string content    : " << str << std::endl;
-	std::cout << "string ptr content: " << *str_ptr << std::endl;
-	std::cout << "string ref content: " << str_ref << std::endl;
+  std::cout << "string content    : " << str << std::endl;
+  std::cout << "string ptr content: " << *stringPTR << std::endl;
+  std::cout << "string ref content: " << stringREF << std::endl;
 
-	return (0);
+  return (0);
 }
