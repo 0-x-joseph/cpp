@@ -116,7 +116,7 @@ void	PhoneBook::display_one(int idx)
 		<< std::setw(3 + left) << " | "
 		<< Contact::truncate(this->contacts[idx].nickname, this->column_width, left)
 		<< std::setw(1 + left) << "|" << std::endl;
-	std::cout << "-------------------------------------------------" << std::endl;
+	std::cout << "--------------------------------------------------" << std::endl;
 	return ;
 }
 
