@@ -11,31 +11,29 @@
 /* ************************************************************************** */
 
 #ifndef __HARL__
-# define __HARL__
+#define __HARL__
 
-# include <string>
+#include <string>
 
 class Harl {
 public:
+  Harl(void);
 
-	Harl(void);
+  void complain(std::string level);
 
-	void complain( std::string level );
-
-	~Harl(void);
+  static unsigned simple_hash(const std::string &s);
+  ~Harl(void);
 
 private:
+  void debug(void);
 
-	void debug( void );
+  void info(void);
 
-	void info( void );
+  void warning(void);
 
-	void warning( void );
+  void error(void);
 
-	void error( void );
-
-	void unknown( void );
-
+  void unknown(void);
 };
 
 #endif /* __HARL__ */
