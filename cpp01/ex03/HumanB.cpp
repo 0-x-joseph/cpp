@@ -14,30 +14,13 @@
 #include "Weapon.hpp"
 #include <iostream>
 
-HumanB::HumanB(void) {
-	this->weapon = 0;
-	this->name = "";
-}
-
-HumanB::HumanB(std::string name) {
-	this->name = name;
-	this->weapon = 0;
-}
-
-HumanB::HumanB(std::string name, Weapon& weapon) {
-	this->name = name;
-	this->weapon = &weapon;
-}
+HumanB::HumanB(std::string n) : name(n), weapon(0) {}
 
 void HumanB::attack(void) {
-	std::cout << this->name
-		<< " attacks with their "
-		<< this->weapon->getType()
-		<< std::endl;
+  std::cout << this->name << " attacks with their " << this->weapon->getType()
+            << std::endl;
 }
 
-void HumanB::setWeapon(Weapon& weapon) {
-	this->weapon = &weapon;
-}
+void HumanB::setWeapon(Weapon &weapon) { this->weapon = &weapon; }
 
-HumanB::~HumanB(void) {}
+HumanB::~HumanB(void) { this->weapon = 0x0; }

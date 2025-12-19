@@ -11,27 +11,25 @@
 /* ************************************************************************** */
 
 #ifndef __WEAPON__
-# define __WEAPON__
+#define __WEAPON__
 
-# include <string>
+#include <string>
 
 class Weapon {
 
 public:
+  Weapon(void);
 
-	Weapon( void );
+  Weapon(std::string t);
 
-	Weapon( std::string type );
+  const std::string &getType(void) const;
 
-	const std::string& getType( void ) const;
+  void setType(std::string t);
 
-	void	setType( std::string t );
-
-	~Weapon( void );
+  ~Weapon(void);
 
 private:
-	std::string	type;
-
+  std::string type;
 };
 
 #endif /* __WEAPON__ */

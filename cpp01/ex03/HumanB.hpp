@@ -11,31 +11,25 @@
 /* ************************************************************************** */
 
 #ifndef __HUMAN_B__
-# define __HUMAN_B__
+#define __HUMAN_B__
 
-# include <string>
-# include "Weapon.hpp"
+#include "Weapon.hpp"
+#include <string>
 
 class HumanB {
 
 public:
+  HumanB(std::string n);
 
-	HumanB(void);
+  void setWeapon(Weapon &w);
 
-	HumanB(std::string name);
+  void attack(void);
 
-	HumanB(std::string name, Weapon& weapon);
-
-	void setWeapon(Weapon& weapon);
-
-	void attack(void);
-
-	~HumanB(void);
+  ~HumanB(void);
 
 private:
-	Weapon*		weapon;
-	std::string	name;
-
+  std::string name;
+  Weapon *weapon;
 };
 
 #endif /* __HUMAN_B__ */

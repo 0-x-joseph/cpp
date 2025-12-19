@@ -14,21 +14,11 @@
 #include "Weapon.hpp"
 #include <iostream>
 
-HumanA::HumanA(void) {
-	this->weapon = 0;
-	this->name = "";
-}
-
-HumanA::HumanA(std::string name, Weapon& w) {
-	this->weapon = &w;
-	this->name = name;
-}
+HumanA::HumanA(std::string n, Weapon &w) : name(n), weapon(w) {}
 
 void HumanA::attack(void) {
-	std::cout << this->name
-		<< " attacks with their "
-		<< this->weapon->getType()
-		<< std::endl;
+  std::cout << this->name << " attacks with their " << this->weapon.getType()
+            << std::endl;
 }
 
 HumanA::~HumanA(void) {}

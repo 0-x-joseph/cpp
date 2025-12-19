@@ -11,27 +11,23 @@
 /* ************************************************************************** */
 
 #ifndef __HUMAN_A__
-# define __HUMAN_A__
+#define __HUMAN_A__
 
-#include <string>
 #include "Weapon.hpp"
+#include <string>
 
 class HumanA {
 
 public:
+  HumanA(std::string n, Weapon &w);
 
-	HumanA(void);
+  void attack(void);
 
-	HumanA(std::string name, Weapon& Weapon);
-
-	void attack(void);
-
-	~HumanA(void);
+  ~HumanA(void);
 
 private:
-	Weapon*		weapon;
-	std::string	name;
-
+  std::string name;
+  Weapon &weapon;
 };
 
 #endif /* __HUMAN_A__ */
