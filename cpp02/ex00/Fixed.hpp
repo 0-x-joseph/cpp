@@ -11,26 +11,25 @@
 /* ************************************************************************** */
 
 #ifndef __FIXED__
-# define __FIXED__
+#define __FIXED__
 
 class Fixed {
 public:
+  Fixed(void);
 
-	Fixed(void);
+  Fixed(int raw);
 
-	Fixed(int raw);
+  Fixed &operator=(const Fixed &c);
 
-	Fixed& operator=( const Fixed& c );
+  int getRawBits(void);
 
-	int getRawBits( void );
+  int setRawBits(int const raw);
 
-	int setRawBits( int const raw );
-
-	~Fixed(void);
+  ~Fixed(void);
 
 private:
-	int	fp;
-	static const int fb = 8;
+  int fp;
+  static const int fb = 8;
 };
 
 #endif /* __FIXED__ */
