@@ -6,11 +6,11 @@
 #    By: ybouryal <ybouryal@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 10:24:27 by ybouryal          #+#    #+#              #
-#    Updated: 2025/08/27 10:24:34 by ybouryal         ###   ########.fr        #
+#    Updated: 2026/01/02 19:26:53 by ybouryal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 LDFLAGS = 
 RM = rm -rf
