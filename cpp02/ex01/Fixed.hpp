@@ -13,13 +13,24 @@
 #ifndef __FIXED__
 #define __FIXED__
 
+#include <string>
+
 class Fixed {
+
 public:
   Fixed(void);
 
-  Fixed(const Fixed &copy);
+  Fixed(int const raw);
 
-  Fixed &operator=(const Fixed &c);
+  Fixed(float const raw);
+
+  Fixed(Fixed const &raw);
+
+  Fixed &operator=(Fixed const &c);
+
+  float toFloat(void) const;
+
+  int toInt(void) const;
 
   int getRawBits(void) const;
 
@@ -29,7 +40,8 @@ public:
 
 private:
   int fp;
-  static const int fb = 8;
+  static const int fb;
 };
 
+std::ostream &operator<<(std::ostream &out, Fixed const &c);
 #endif /* __FIXED__ */
