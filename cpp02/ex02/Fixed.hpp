@@ -13,8 +13,7 @@
 #ifndef __FIXED__
 #define __FIXED__
 
-#include <c++/10/iostream>
-#include <stdint.h>
+#include <iostream>
 #include <string>
 
 class Fixed {
@@ -22,7 +21,7 @@ class Fixed {
 public:
   // Overloading Constructors for different type we support
   Fixed(void);
-  Fixed(int32_t const raw);
+  Fixed(int const raw);
   Fixed(float const raw);
   Fixed(Fixed const &raw);
 
@@ -57,16 +56,16 @@ public:
 
   // Utility function for the class
   float toFloat(void) const;
-  int32_t toInt(void) const;
-  int32_t getRawBits(void) const;
-  int32_t setRawBits(int const raw);
+  int toInt(void) const;
+  int getRawBits(void) const;
+  int setRawBits(int const raw);
 
   // Destructor
   ~Fixed(void);
 
 private:
-  int32_t fp;
-  static const int32_t fb;
+  int fp;
+  static const int fb;
 };
 
 std::ostream &operator<<(std::ostream &out, Fixed const &c);

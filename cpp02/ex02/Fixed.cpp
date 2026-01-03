@@ -13,7 +13,7 @@
 #include "Fixed.hpp"
 #include <cmath>
 
-const int32_t Fixed::fb = 8;
+const int Fixed::fb = 8;
 
 Fixed::Fixed(void) : fp(0) {}
 
@@ -38,27 +38,33 @@ bool Fixed::operator>(const Fixed &ob) const {
   return (this->toFloat() > ob.toFloat());
 }
 
-bool Fixed::operator<(const Fixed &ob) const { return (ob > *this); }
+bool Fixed::operator<(const Fixed &ob) const {
+  return (this->fp < ob.getRawBits());
+}
 
-bool Fixed::operator>=(const Fixed &ob) const { return !(ob < *this); }
+bool Fixed::operator>=(const Fixed &ob) const {
+  return (this->fp >= ob.getRawBits());
+}
 
-bool Fixed::operator<=(const Fixed &ob) const { return !(*this < ob); }
+bool Fixed::operator<=(const Fixed &ob) const {
+  return (this->fp <= ob.getRawBits());
+}
 
 bool Fixed::operator==(const Fixed &ob) const {
-  return (this->toFloat() == ob.toFloat());
+  return (this->fp == ob.getRawBits());
 }
 
 bool Fixed::operator!=(const Fixed &ob) const {
-  return (this->toFloat() != ob.toFloat());
+  return (this->fp != ob.getRawBits());
 }
 
 // Overloading Arithmetic Operators
 float Fixed::operator+(const Fixed &ob) const {
-  return this->toFloat() + ob.toFloat();
+  return (this->fp + ob.getRawBits());
 }
 
 float Fixed::operator-(const Fixed &ob) const {
-  return this->toFloat() - ob.toFloat();
+  return (this->fp - ob.getRawBits());
 }
 
 float Fixed::operator*(const Fixed &ob) const {
@@ -96,24 +102,24 @@ Fixed Fixed::operator--(int) {
 
 // Overloading min max
 Fixed &Fixed::min(Fixed &ob1, Fixed &ob2) {
-  if (ob1.toFloat() <= ob2.toFloat())
+  if (ob1.getRawBits() <= ob2.getRawBits())
     return ob1;
   return ob2;
 }
 const Fixed &Fixed::min(const Fixed &ob1, const Fixed &ob2) {
-  if (ob1.toFloat() <= ob2.toFloat())
+  if (ob1.getRawBits() <= ob2.getRawBits())
     return ob1;
   return ob2;
 }
 
 Fixed &Fixed::max(Fixed &ob1, Fixed &ob2) {
-  if (ob1.toFloat() >= ob2.toFloat())
+  if (ob1.getRawBits() >= ob2.getRawBits())
     return ob1;
   return ob2;
 }
 
 const Fixed &Fixed::max(const Fixed &ob1, const Fixed &ob2) {
-  if (ob1.toFloat() >= ob2.toFloat())
+  if (ob1.getRawBits() >= ob2.getRawBits())
     return ob1;
   return ob2;
 }
