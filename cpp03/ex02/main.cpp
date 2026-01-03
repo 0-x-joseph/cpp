@@ -24,8 +24,5 @@ int main() {
   FragTrap fragCopy(frag);
   fragCopy.highFivesGuys();
 
-  ClapTrap *ptr = new FragTrap("joseph");
-  delete ptr;
-
   return 0;
 }

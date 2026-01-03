@@ -25,8 +25,5 @@ int main() {
 
   b.guardGate();
 
-  ClapTrap *ptr = new ScavTrap("Test");
-  delete ptr;
-
   return 0;
 }
