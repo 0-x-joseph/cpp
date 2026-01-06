@@ -15,10 +15,10 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 LDFLAGS = 
 RM = rm -rf
 
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+SRCS = main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = animals_brain
+NAME = abstract_animal
 
 all: $(NAME)
 

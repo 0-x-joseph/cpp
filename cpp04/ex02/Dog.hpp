@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouryal <ybouryal@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 21:42:44 by ybouryal          #+#    #+#             */
-/*   Updated: 2026/01/06 17:53:05 by ybouryal         ###   ########.fr       */
+/*   Created: 2026/01/02 20:48:33 by ybouryal          #+#    #+#             */
+/*   Updated: 2026/01/02 20:50:23 by ybouryal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __BRAIN__
-#define __BRAIN__
+#ifndef __DOG__
+#define __DOG__
 
-#define MAX_IDEAS 100
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 
-#include <string>
-
-class Brain {
+class Dog : public AAnimal {
 private:
-  std::string ideas[MAX_IDEAS];
+  Brain *brain;
 
 public:
-  Brain();
-  Brain(const Brain &other);
-  Brain &operator=(const Brain &other);
-  ~Brain();
+  Dog();
+  Dog(const Dog &other);
+  Dog &operator=(const Dog &other);
+  ~Dog();
+
+  void makeSound() const;
 };
 
-#endif /* __BRAIN__ */
+#endif /* __DOG__ */

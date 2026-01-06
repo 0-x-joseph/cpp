@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouryal <ybouryal@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 21:42:44 by ybouryal          #+#    #+#             */
-/*   Updated: 2026/01/06 17:53:05 by ybouryal         ###   ########.fr       */
+/*   Created: 2026/01/02 19:23:06 by ybouryal          #+#    #+#             */
+/*   Updated: 2026/01/02 20:44:36 by ybouryal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __BRAIN__
-#define __BRAIN__
-
-#define MAX_IDEAS 100
+#ifndef __AANIMAL__
+#define __AANIMAL__
 
 #include <string>
 
-class Brain {
-private:
-  std::string ideas[MAX_IDEAS];
+class AAnimal {
+protected:
+  std::string type;
 
 public:
-  Brain();
-  Brain(const Brain &other);
-  Brain &operator=(const Brain &other);
-  ~Brain();
+  AAnimal();
+  AAnimal(const AAnimal &other);
+  AAnimal &operator=(const AAnimal &other);
+  virtual ~AAnimal();
+
+  virtual void makeSound() const = 0;
+  std::string getType() const;
 };
 
-#endif /* __BRAIN__ */
+#endif /* __AANIMAL__ */
