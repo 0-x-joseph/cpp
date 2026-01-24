@@ -5,13 +5,12 @@ Form::Form()
     : _name("Default"), _is_signed(false), _sign_grade(2), _exec_grade(1) {}
 
 Form::Form(std::string name, int sign_grade, int exec_grade)
-    : _name(name), _is_signed(false) {
+    : _name(name), _is_signed(false), _sign_grade(sign_grade),
+      _exec_grade(exec_grade) {
   if (sign_grade < 1 || exec_grade < 1)
     throw Form::GradeTooHighException();
   if (sign_grade > 150 || exec_grade > 150)
     throw Form::GradeTooLowException();
-  _sign_grade = sign_grade;
-  _exec_grade = exec_grade;
 }
 
 Form::Form(const Form &other)
@@ -21,8 +20,6 @@ Form::Form(const Form &other)
 Form &Form::operator=(const Form &other) {
   if (this != &other) {
     _is_signed = other._is_signed;
-    _sign_grade = other._sign_grade;
-    _exec_grade = other._exec_grade;
   }
   return *this;
 }
@@ -42,6 +39,14 @@ void Form::beSigned(const Bureaucrat &b) {
     throw Form::GradeTooLowException();
   }
   _is_signed = true;
+}
+
+const char *Form::GradeTooHighException::what() const throw() {
+  return "Grade is too high!";
+}
+
+const char *Form::GradeTooLowException::what() const throw() {
+  return "Grade is too low!";
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &f) {

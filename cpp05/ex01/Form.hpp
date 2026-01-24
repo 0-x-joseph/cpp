@@ -9,8 +9,8 @@ class Form {
 private:
   const std::string _name;
   bool _is_signed;
-  int _sign_grade;
-  int _exec_grade;
+  const int _sign_grade;
+  const int _exec_grade;
 
 public:
   Form();
@@ -28,12 +28,12 @@ public:
 
   class GradeTooHighException : public std::exception {
   public:
-    virtual const char *what() const throw() { return "Grade is too high!"; }
+    virtual const char *what() const throw();
   };
 
   class GradeTooLowException : public std::exception {
   public:
-    virtual const char *what() const throw() { return "Grade is too low!"; }
+    virtual const char *what() const throw();
   };
 };
 
