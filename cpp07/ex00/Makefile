@@ -3,10 +3,10 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 LDFLAGS = 
 RM = rm -rf
 
-SRCS = main.cpp ScalarConverter.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = convert
+NAME = generics
 
 all: $(NAME)
 
