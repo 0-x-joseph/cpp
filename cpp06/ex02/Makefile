@@ -3,10 +3,10 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 LDFLAGS = 
 RM = rm -rf
 
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp typeinfo.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = bureaucrat
+NAME = typeinfo
 
 all: $(NAME)
 

@@ -1,12 +1,12 @@
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra
 LDFLAGS = 
 RM = rm -rf
 
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Serializer.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = bureaucrat
+NAME = serializer
 
 all: $(NAME)
 
