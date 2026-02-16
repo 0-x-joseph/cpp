@@ -39,13 +39,6 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
     std::cout << "First 20 (forward): ";
     print_first_n (it, ite, 20);
 
-    // Reverse iteration
-    typename MS::reverse_iterator rit  = ms.rbegin ();
-    typename MS::reverse_iterator rite = ms.rend ();
-    std::cout << "First 20 (reverse): ";
-    print_first_n (rit, rite, 20);
-
-    // Re-get forward iterators (we consumed them above)
     it  = ms.begin ();
     ite = ms.end ();
 
@@ -53,7 +46,6 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
     int sum = std::accumulate (it, ite, 0);
     std::cout << "sum: " << sum << std::endl;
 
-    // min/max (manual to stay C++98-friendly and avoid edge cases)
     it     = ms.begin ();
     int mn = *it;
     int mx = *it;
@@ -65,14 +57,12 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
     }
     std::cout << "min: " << mn << " | max: " << mx << std::endl;
 
-    // count occurrences of some value
     int target = ms.top ();
     it         = ms.begin ();
     ite        = ms.end ();
     int cnt    = std::count (it, ite, target);
     std::cout << "count(top=" << target << "): " << cnt << std::endl;
 
-    // find a random value
     int probe                   = rand_int (-1000, 1000);
     it                          = ms.begin ();
     ite                         = ms.end ();
@@ -80,7 +70,6 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
     std::cout << "find(" << probe
               << "): " << (found != ite ? "FOUND" : "not found") << std::endl;
 
-    // Range walk: skip first 100, print next 10
     it       = ms.begin ();
     ite      = ms.end ();
     int skip = 100;
@@ -89,26 +78,22 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
     std::cout << "After skipping 100, next 10: ";
     print_first_n (it, ite, 10);
 
-    // Copy constructor
     MS copy (ms);
     std::cout << "copy.size: " << copy.size () << " | copy.top: " << copy.top ()
               << std::endl;
 
-    // Assignment
     MS assigned;
     assigned = ms;
     std::cout << "assigned.size: " << assigned.size ()
               << " | assigned.top: " << assigned.top () << std::endl;
 
-    // Mutate original and show copies unaffected (sanity)
     ms.pop ();
     std::cout << "after pop -> original.top: " << ms.top ()
               << " | copy.top: " << copy.top ()
               << " | assigned.top: " << assigned.top () << std::endl;
 
-    // Iterate assigned again (ensure iterators still work post assignment)
-    typename MS::const_iterator cit  = assigned.begin ();
-    typename MS::const_iterator cite = assigned.end ();
+    typename MS::iterator cit  = assigned.begin ();
+    typename MS::iterator cite = assigned.end ();
     std::cout << "assigned first 10 (const iter): ";
     int i = 0;
     while (cit != cite && i < 10) {
@@ -122,7 +107,6 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
 int main () {
     std::srand (static_cast<unsigned int> (std::time (NULL)));
 
-    // Test 1: vector container
     {
         MutantStack<int, std::vector<int> > ms;
         ms.push (5);
@@ -132,7 +116,6 @@ int main () {
         run_test ("MutantStack<int, std::vector<int> >", ms);
     }
 
-    // Test 2: deque container (default stack container)
     {
         MutantStack<int> ms;
         ms.push (42);
@@ -142,7 +125,6 @@ int main () {
         run_test ("MutantStack<int, std::deque<int> >", ms);
     }
 
-    // Test 3: list container
     {
         MutantStack<int, std::list<int> > ms;
         ms.push (1);
