@@ -39,6 +39,8 @@ int main () {
         assigned = original;
 
         std::cout << "Copy longest span: " << copy.longestSpan () << std::endl;
+        std::cout << "Copy shortest span: " << copy.shortestSpan () << std::endl;
+        std::cout << "Assigned longest span: " << assigned.longestSpan () << std::endl;
         std::cout << "Assigned shortest span: " << assigned.shortestSpan () << std::endl;
     } catch (const std::exception& e) {
         std::cerr << "Exception: " << e.what () << std::endl;

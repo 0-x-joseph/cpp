@@ -32,7 +32,6 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
     std::cout << "size: " << ms.size () << std::endl;
     std::cout << "top:  " << ms.top () << std::endl;
 
-    // Forward iteration
     typename MS::iterator it  = ms.begin ();
     typename MS::iterator ite = ms.end ();
 
@@ -42,7 +41,6 @@ template <typename MS> static void run_test (const std::string& name, MS& ms) {
     it  = ms.begin ();
     ite = ms.end ();
 
-    // Algorithms on iterators
     int sum = std::accumulate (it, ite, 0);
     std::cout << "sum: " << sum << std::endl;
 
