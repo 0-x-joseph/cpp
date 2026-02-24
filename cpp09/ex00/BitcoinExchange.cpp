@@ -38,7 +38,7 @@ int Date::key () const {
 }
 
 Date Date::from_string (const std::string& str) {
-    if (str.size () < 10)
+    if (str.size () < 10 || str.size () > 11)
         throw std::exception ();
     int y = std::atoi (str.substr (0, 4).c_str ());
     int m = std::atoi (str.substr (5, 2).c_str ());
